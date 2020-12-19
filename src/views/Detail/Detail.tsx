@@ -9,6 +9,7 @@ import * as MovieActions from '../../store/movie/actions';
 import './Detail.scss';
 import MovieDetail from '../../components/MovieDetail/MovieDetail';
 import { Movie } from '../../store/movie/model';
+import NotFound from '../errors/NotFound/NotFound';
 
 interface DispatchProps {
   fetchMovieAction(search?: string): void;
@@ -34,10 +35,13 @@ class DetailPage extends Component<DetailProps> {
     return (
       <Box component="div">
         <Container maxWidth="md" className="movieDetail">
-          <MovieDetail
-            movie={this.props.movie || new Movie()}
-            isFavourite={this.props.favouriteMovies.find((movie) => movie.id === this.props.movie?.id) !== undefined}
-          />
+          {this.props.movie && (
+            <MovieDetail
+              movie={this.props.movie || new Movie()}
+              isFavourite={this.props.favouriteMovies.find((movie) => movie.id === this.props.movie?.id) !== undefined}
+            />
+          )}
+          {!this.props.movie && <NotFound />}
         </Container>
       </Box>
     );

@@ -9,7 +9,8 @@ export enum MovieActionTypes {
   SET_MOVIE = '@movies/SET_MOVIE',
   SET_FAVOURITE_MOVIES = '@movies/SET_FAVOURITE_MOVIES',
   ADD_FAVOURITE_MOVIE = '@movies/ADD_FAVOURITE_MOVIE',
-  REMOVE_FAVOURITE_MOVIE = '@movies/REMOVE_FAVOURITE_MOVIE'
+  REMOVE_FAVOURITE_MOVIE = '@movies/REMOVE_FAVOURITE_MOVIE',
+  SET_LAST_SEARCH = '@movies/SET_LAST_SEARCH'
 }
 
 export interface MoviesState {
@@ -18,6 +19,7 @@ export interface MoviesState {
   message: string;
   movies: Movie[];
   movie?: Movie;
+  lastSearch: string;
   favouriteMovies: Movie[];
   pagination: Pagination;
 }
@@ -76,6 +78,11 @@ type RemoveFavouriteMovieActionType = {
   payload: string;
 };
 
+type SetLastSearchActionType = {
+  type: MovieActionTypes.SET_LAST_SEARCH;
+  payload: string;
+};
+
 export type MovieActions =
   | FetchMoviesActionType
   | FetchMovieActionType
@@ -85,4 +92,5 @@ export type MovieActions =
   | SetMovieActionType
   | SetFavouriteMoviesActionType
   | AddFavouriteMovieActionType
+  | SetLastSearchActionType
   | RemoveFavouriteMovieActionType;

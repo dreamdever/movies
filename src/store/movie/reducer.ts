@@ -7,6 +7,7 @@ const initialState: MoviesState = {
   message: '',
   movies: [],
   movie: undefined,
+  lastSearch: '',
   favouriteMovies: [],
   pagination: {
     total: 0,
@@ -74,6 +75,11 @@ const movies: Reducer<MoviesState, MovieActions> = (state = initialState, action
       return {
         ...state,
         favouriteMovies
+      };
+    case MovieActionTypes.SET_LAST_SEARCH:
+      return {
+        ...state,
+        lastSearch: action.payload
       };
     default:
       return state;

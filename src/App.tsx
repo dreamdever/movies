@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import FavouritePage from './views/Favourite/Favourite';
 import { useDispatch } from 'react-redux';
 import { setFavouriteMoviesAction } from './store/movie/actions';
+import NotFound from './views/errors/NotFound/NotFound';
 
 function App(): JSX.Element {
   const dispatch = useDispatch();
@@ -19,17 +20,22 @@ function App(): JSX.Element {
       <Router>
         <Container maxWidth="lg">
           <Grid container className="navigation" direction="row" justify="flex-end" alignItems="center">
+            <Grid item container xs>
+              <Grid item>
+                <Typography variant="button">MOVIE DATABASE</Typography>
+              </Grid>
+            </Grid>
             <Grid item>
               <Typography variant="button">
                 <Link className="navigationLink" to="/">
-                  Home
+                  Search
                 </Link>
               </Typography>
             </Grid>
             <Grid item>
               <Typography variant="button">
                 <Link className="navigationLink" to="/favourite">
-                  Favourite
+                  Favourite Movies
                 </Link>
               </Typography>
             </Grid>
@@ -39,6 +45,7 @@ function App(): JSX.Element {
           <Route exact path="/" component={SearchPage} />
           <Route exact path="/movie/:movieId" component={DetailPage} />
           <Route exact path="/favourite" component={FavouritePage} />
+          <Route path="" component={NotFound} />
         </Switch>
       </Router>
     </Box>

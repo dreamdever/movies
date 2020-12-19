@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Container, TextField } from '@material-ui/core';
+import { Box, CircularProgress, Container, Grid, TextField } from '@material-ui/core';
 import { bindActionCreators, Dispatch } from 'redux';
 import Typography from '@material-ui/core/Typography';
 import Pagination from '@material-ui/lab/Pagination';
@@ -44,13 +44,18 @@ class SearchPage extends Component<SearchProps, SearchState> {
     return (
       <Box component="div">
         <Container maxWidth="md" className="searchContainer">
-          <TextField
-            value={this.state.search}
-            onChange={this.handleSearch}
-            className="searchInput"
-            label="Search..."
-            fullWidth
-          />
+          <Grid container>
+            <Grid item xs>
+              <TextField
+                value={this.state.search}
+                onChange={this.handleSearch}
+                className="searchInput"
+                label="Search..."
+                fullWidth
+              />
+            </Grid>
+            <Grid item>{this.props.loading && <CircularProgress />}</Grid>
+          </Grid>
         </Container>
         <Container maxWidth="lg">
           {!this.props.error && this.props.movies?.length > 0 && (

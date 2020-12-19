@@ -13,3 +13,4 @@ export const setMovieAction = (movie: Movie) => action(MovieActionTypes.SET_MOVI
 export const setFavouriteMoviesAction = () => action(MovieActionTypes.SET_FAVOURITE_MOVIES);
 export const addFavouriteMovieAction = (movie: Movie) => action(MovieActionTypes.ADD_FAVOURITE_MOVIE, movie);
 export const removeFavouriteMovieAction = (movieId: string) => action(MovieActionTypes.REMOVE_FAVOURITE_MOVIE, movieId);
+export const setLastSearchAction = (search: string) => action(MovieActionTypes.SET_LAST_SEARCH, search);

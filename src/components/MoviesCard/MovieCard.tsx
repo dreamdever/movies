@@ -29,7 +29,7 @@ export default function MovieCard({ movie }: { movie: Movie }): JSX.Element {
           <img src={movie.img} alt={movie.title} />
           <GridListTileBar
             title={movie.title}
-            subtitle={<span>year: {movie.year}</span>}
+            subtitle={<span>Year: {movie.year}</span>}
             actionIcon={
               <IconButton aria-label={`info about ${movie.title}`} className={classes.icon}>
                 <InfoIcon />
